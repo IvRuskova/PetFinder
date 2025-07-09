@@ -11,9 +11,9 @@ namespace PetFinder.Data
         {
         }
 
-        public DbSet<Dog> Dogs { get; set; }
-        public DbSet<Breed> Breeds { get; set; }
-        public DbSet<Owner> Owners { get; set; }
+        public DbSet<Dog>? Dogs { get; set; }
+        public DbSet<Breed>? Breeds { get; set; }
+        public DbSet<Owner>? Owners { get; set; }
 
     }
 }
