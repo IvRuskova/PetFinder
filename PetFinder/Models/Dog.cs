@@ -25,5 +25,7 @@ namespace PetFinder.Models
 
         public int OwnerId { get; set; }
         public Owner? Owner { get; set; }
+
+        public ICollection<VetReport> VetReports { get; set; } = new List<VetReport>();
     }
 }

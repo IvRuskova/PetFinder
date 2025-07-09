@@ -13,6 +13,6 @@ namespace PetFinder.Models
         [Required]
         public string Name { get; set; } = string.Empty;
 
-        public ICollection<Dog>? Dogs { get; set; }
+        public ICollection<Dog> Dogs { get; set; }
     }
 }

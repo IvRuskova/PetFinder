@@ -26,6 +26,10 @@ namespace PetFinder.Models
         [StringLength(AdressLength)]
         public string Address { get; set; } = string.Empty;
 
+        public string ApplicationUserId { get; set; } = string.Empty;
+        public ApplicationUser? ApplicationUser { get; set; }
+
+
         //Navigation - one owner have many dogs
         public ICollection<Dog> Dogs { get; set; } = new List<Dog>();
     }
