@@ -26,6 +26,10 @@ namespace PetFinder.Data
                    new Breed { Id = 2, Name = "Poodles" },
                    new Breed { Id = 3, Name = "Saint Bernard" }
                 );
+            builder.Entity<VetReport>()
+                   .HasOne(v => v.Dog)
+                   .WithMany(d => d.VetReports)
+                   .HasForeignKey(v => v.DogId);
         }
 
     }

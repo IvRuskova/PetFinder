@@ -17,6 +17,6 @@ namespace PetFinder.Models
         public string ReporterName { get; set; } = string.Empty;
 
         public int DogId { get; set; }
-        public Dog? Dog { get; set; }
+        public Dog Dog { get; set; } = null!;
     }
 }
