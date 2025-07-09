@@ -14,6 +14,6 @@ namespace PetFinder.Models
 
         public string ChipNumber { get; set; } = string.Empty;
 
-        public string IP { get; set; }
+        public string? IpAddress { get; set; }
     }
 }
