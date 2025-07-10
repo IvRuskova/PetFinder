@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PetFinder.Data;
 
-namespace PetFinder.Controllers
+namespace PetFinder.Areas.Public.Controllers
 {
     [Area("Public")]
     public class ChipSearchController : Controller
@@ -14,7 +14,7 @@ namespace PetFinder.Controllers
             _context = context;
         }
 
-        public IActionResult  Index() => View();
+        public IActionResult Index() => View();
 
         [HttpPost]
         [ValidateAntiForgeryToken]

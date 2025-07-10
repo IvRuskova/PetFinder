@@ -26,7 +26,7 @@ namespace PetFinder.Models
         [StringLength(AdressLength)]
         public string Address { get; set; } = string.Empty;
 
-        public string ApplicationUserId { get; set; } = string.Empty;
+        public string? ApplicationUserId { get; set; } 
         public ApplicationUser? ApplicationUser { get; set; }
 
 

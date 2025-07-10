@@ -2,13 +2,6 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form asp-action="Search" method="post">
-    @Html.AntiForgeryToken()
-    <label for="chip">Enter Chip Number: </label>
-    <input type="text" name="chipNumber" required class="form-control" />
-    <button type="submit" class="btn btn-primary mt-2">Search</button>
-</form>
-@* <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div> *@
+<h2>Welcome to PetFinder</h2>
+<p>Find lost dog by chip number, manage accounts and more.</p>
+

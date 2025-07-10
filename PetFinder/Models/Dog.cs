@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PetFinder.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using static PetFinder.Constants.DataConstants;
 
@@ -19,6 +20,8 @@ namespace PetFinder.Models
         public string ChipNumber { get; set; } = string.Empty;
 
         public int Age { get; set; }
+
+        public DogStatus Status { get; set; } = DogStatus.Healthy;
 
         public int BreedId { get; set; }
         public Breed? Breed { get; set; } 
