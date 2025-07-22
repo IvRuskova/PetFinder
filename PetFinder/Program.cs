@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using PetFinder.Data;
 using PetFinder.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace PetFinder.Data
+namespace PetFinder.Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

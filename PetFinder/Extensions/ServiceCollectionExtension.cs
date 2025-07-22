@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PetFinder.Data;
-using Microsoft.Extensions.DependencyInjection;
+using PetFinder.Infrastructure.Data;
 
 namespace PetFinder.Extensions
 {
