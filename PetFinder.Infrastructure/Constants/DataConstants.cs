@@ -19,5 +19,10 @@ namespace PetFinder.Infrastructure.Constants
         public const int FullNameMaxLength = 100;
 
         public const int AddressMaxLength = 200;
+
+        public const int DescriptionMaxLength = 500;
+
+        public const int ReporterNameMaxLength = 50;
+
     }
 }
