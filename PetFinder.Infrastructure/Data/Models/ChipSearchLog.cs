@@ -28,6 +28,6 @@ namespace PetFinder.Infrastructure.Data.Models
 
         [Required]
         [Comment("The IP number.")]
-        public string IP { get; set; }
+        public string IpAddress { get; set; }= string.Empty;
     }
 }

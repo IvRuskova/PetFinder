@@ -12,8 +12,8 @@ using PetFinder.Infrastructure.Data;
 namespace PetFinder.Infrastructure.Migrations
 {
     [DbContext(typeof(PetFinderDbContext))]
-    [Migration("20250722061406_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250724223426_AddedVetReport")]
+    partial class AddedVetReport
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,6 +226,101 @@ namespace PetFinder.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("PetFinder.Infrastructure.Data.Models.Breed", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier for the breed.");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Name of the breed.");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Breeds");
+                });
+
+            modelBuilder.Entity("PetFinder.Infrastructure.Data.Models.Dog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier for the dog.");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int")
+                        .HasComment("Dog age.");
+
+                    b.Property<int>("BreedId")
+                        .HasColumnType("int")
+                        .HasComment("Dog breed identifier.");
+
+                    b.Property<string>("ChipNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)")
+                        .HasComment("Unique chip number for the dog.");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)")
+                        .HasComment("Name of the dog.");
+
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("int")
+                        .HasComment("Owner identifier.");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("Dogs");
+
+                    b.HasComment("Represents a dog entity in the system.");
+                });
+
+            modelBuilder.Entity("PetFinder.Infrastructure.Data.Models.Owner", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier for the owner.");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasComment("Full name for the owner.");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Owners");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -275,6 +370,35 @@ namespace PetFinder.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PetFinder.Infrastructure.Data.Models.Dog", b =>
+                {
+                    b.HasOne("PetFinder.Infrastructure.Data.Models.Breed", "Breed")
+                        .WithMany("Dogs")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PetFinder.Infrastructure.Data.Models.Owner", "Owner")
+                        .WithMany("Dogs")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Breed");
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("PetFinder.Infrastructure.Data.Models.Breed", b =>
+                {
+                    b.Navigation("Dogs");
+                });
+
+            modelBuilder.Entity("PetFinder.Infrastructure.Data.Models.Owner", b =>
+                {
+                    b.Navigation("Dogs");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,7 +11,7 @@ using PetFinder.Infrastructure.Data;
 
 namespace PetFinder.Infrastructure.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(PetFinderDbContext))]
     [Migration("20250723123634_PetFinderEntities")]
     partial class PetFinderEntities
     {

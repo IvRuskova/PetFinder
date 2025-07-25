@@ -13,7 +13,7 @@ namespace PetFinder.Extensions
         public static IServiceCollection AddPetFinderDbContext(this IServiceCollection services, IConfiguration config)
         {
             var connectionString = config.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<PetFinderDbContext>(options =>
                 options.UseSqlServer(connectionString));
             services.AddDatabaseDeveloperPageExceptionFilter();
             return services;
@@ -21,7 +21,7 @@ namespace PetFinder.Extensions
         public static IServiceCollection AddPetFinderIdentity(this IServiceCollection services, IConfiguration config)
         {
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<PetFinderDbContext>();
             return services;
         }
     }

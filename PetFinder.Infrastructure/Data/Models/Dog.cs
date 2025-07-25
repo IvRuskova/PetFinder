@@ -38,5 +38,6 @@ namespace PetFinder.Infrastructure.Data.Models
 
         [ForeignKey(nameof(OwnerId))]
         public Owner Owner { get; set; } = null!;
+        public ICollection<VetReport> VetReports { get; set; } = new List<VetReport>();
     }
 }
