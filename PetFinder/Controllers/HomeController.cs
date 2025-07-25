@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using PetFinder.Core.Models.Dog;
 using PetFinder.Models;
 
 namespace PetFinder.Controllers
@@ -15,7 +16,8 @@ namespace PetFinder.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new DogViewModel();
+            return View(model);
         }
 
 

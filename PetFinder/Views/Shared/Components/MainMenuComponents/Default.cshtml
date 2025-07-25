@@ -1,5 +1,42 @@
-﻿<ul class="navbar-nav flex-grow-1">
+﻿
+<ul class="navbar-nav flex-grow-1">
+    
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Dog" asp-action="All">All Dogs</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Breed" asp-action="Index">Breeds</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Index">Search By Chip</a>
+    </li>
+
+    @if (this.User?.Identity?.IsAuthenticated ?? false)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Dog" asp-action="Mine">My dog/s</a>
+        </li>
+
+        @if (User.IsInRole("Owner"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Dog" asp-action="Create">Add Dog</a>
+            </li>
+        }
+
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Admin area
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="Breed" asp-action="Index">Breeds</a></li>
+                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="VetReport" asp-action="Index">Vet Reports</a></li>
+                    <li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">Users</a></li>
+                </ul>
+            </li>
+        }
+    }
+   
 </ul>

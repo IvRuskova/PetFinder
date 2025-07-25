@@ -1,0 +1,12 @@
+﻿@model IEnumerable<PetFinder.Infrastructure.Data.Models.Breed>
+@{
+    ViewData["Title"] = "Dogs breeds";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<ul>
+@foreach (var breed in Model)
+{
+        <li>@breed.Name</li>
+}
+<hr />
